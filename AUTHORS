@@ -1,0 +1,12 @@
+Kaya Oğuz <kaya@oguz.name.tr>
+
+
+_tools.cpp
+_tools.h
+smtp.cpp
+smtp.h
+
+are by patrik08 @
+http://www.qtcentre.org/forum/f-qt-programming-2/t-sending-email-using-qt-2221.html
+
+These files were also modified where needed...
