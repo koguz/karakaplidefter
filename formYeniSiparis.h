@@ -1,6 +1,6 @@
 /*    
     Kara Kaplı Defter
-    Copyright (C) 2006  Kaya Oğuz
+    Copyright (C) 2006 & 2009 Kaya Oğuz
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,6 +30,8 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 	Q_OBJECT
 	public:
 	bool editMode;
+	bool editItem;
+    QTreeWidgetItem* itemToEdit;
 	bool isUpdate;
 	bool changed;
 	QString ssid;
@@ -38,12 +40,14 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 		setupUi(this);
 		ssid = id;
 		editMode = false;
+		editItem = false;
 		isUpdate = false;
 		changed = false;
+        itemToEdit = 0;
 		
 		dateTeslim->setDate(QDate::currentDate());
-		treeSiparis->setToolTip(QString::fromUtf8(
-		"Sağdaki düğmeler ile sipariş ekleyebilir ve silebilirsiniz.\n"));
+		//treeSiparis->setToolTip(QString::fromUtf8(
+		//"Sağdaki düğmeler ile sipariş ekleyebilir ve silebilirsiniz.\n"));
 		
 		comboBaglanti->clear();
 		QSqlDatabase db = QSqlDatabase::database();
@@ -75,8 +79,9 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 				it->setText(0, r.value(2).toString());
 				it->setText(1, r.value(3).toString());
 				it->setText(2, r.value(4).toString());
-				it->setText(3, r.value(5).toString());
-				it->setToolTip(3, r.value(5).toString());
+                it->setText(3, r.value(6).toString());
+                it->setText(4, r.value(5).toString());
+                it->setToolTip(4, r.value(5).toString());
 			}
 			
 		}
@@ -87,6 +92,8 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 // 		connect(spinAdet, SIGNAL(valueChanged(const QString &)), this, SLOT(slotHesapla(const QString &)));
 		connect(btnEkle, SIGNAL(clicked()), this, SLOT(slotEkle()));
 		connect(btnSil,  SIGNAL(clicked()), this, SLOT(slotSil()));
+		connect(treeSiparis, SIGNAL(itemDoubleClicked ( QTreeWidgetItem *, int)), this, SLOT(treeDClicked(QTreeWidgetItem*, int)));
+        connect(btnYeni, SIGNAL(clicked()), this, SLOT(slotYeni()));
 		
 	}
 		
@@ -105,6 +112,40 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 	}
 	
 	public slots:
+
+    void slotYeni()
+    {
+        if (editItem)
+        {
+            int cevap = QMessageBox::warning(this, "Dikkat", QString::fromUtf8("Şu an düzenlenmekte olan bir sipariş parçası zaten var, devam ederseniz güncellemeleriniz iptal olacak."), QMessageBox::Ok | QMessageBox::Cancel);
+            if (cevap == QMessageBox::Cancel)
+                return;
+        }
+        temizle();
+        editItem = false;
+    }
+	
+	void treeDClicked(QTreeWidgetItem* item, int column)
+	{
+		if (editItem)
+		{
+			int cevap = QMessageBox::warning(this, "Dikkat", QString::fromUtf8("Şu an düzenlenmekte olan bir sipariş parçası zaten var, devam ederseniz güncellemeleriniz iptal olacak."), QMessageBox::Ok | QMessageBox::Cancel);
+			if (cevap == QMessageBox::Cancel)
+				return;
+		}
+		tabWidget->setCurrentIndex(1);
+		editItem = true;
+        itemToEdit = item;
+		
+		// alanları doldur
+		lineTur->setText(item->text(0));
+        spinAdet->setValue(item->text(1).toInt());
+		lineFiyat->setText(item->text(2));
+        lineTedarik->setText(item->text(3));
+        textIstek->setText(item->text(4));
+		
+		return;
+	}
 	
 	void slotKaydet()
 	{
@@ -164,12 +205,13 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 			while(*it)
 			{
 				QTreeWidgetItem* i = *it;
-				q.prepare("INSERT INTO siparisListe(siparisId, tur, adet, fiyat, ekler) VALUES(?, ?, ?, ?, ?)");
+                q.prepare("INSERT INTO siparisListe(siparisId, tur, adet, fiyat, ekler, tedarik) VALUES(?, ?, ?, ?, ?, ?)");
 				q.bindValue(0, sid);
 				q.bindValue(1, i->text(0));
 				q.bindValue(2, i->text(1));
 				q.bindValue(3, i->text(2));
-				q.bindValue(4, i->text(3));
+                q.bindValue(5, i->text(3));
+                q.bindValue(4, i->text(4));
 				q.exec();
 				++it;
 			}
@@ -183,6 +225,7 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 		lineTur->clear();
 		spinAdet->setValue(1);
 		lineFiyat->clear();
+        lineTedarik->clear();
 		textIstek->clear();
 	}
 	
@@ -220,16 +263,35 @@ class FormYeniSiparis:public QDialog, Ui::formYeniSiparis
 			QString::fromUtf8("Fiyat alanına sadece rakam girebilirsiniz."));
 			return;
 		}
+		if(!isNumeric(lineTedarik->text()))
+		{
+			QMessageBox::warning(this, "Hata!", 
+			QString::fromUtf8("Tedarik fiyatı alanına sadece rakam girebilirsiniz."));
+			return;
+		}
 		
 		changed = true;
-		
-		QTreeWidgetItem *it = new QTreeWidgetItem(treeSiparis);
-		it->setText(0, lineTur->text());
-		it->setText(1, QString::number(spinAdet->value()));
-		it->setText(2, lineFiyat->text());
-		it->setText(3, textIstek->toPlainText());
-		it->setToolTip(3, textIstek->toPlainText());
-		
+        if(editItem)
+        {
+            itemToEdit->setText(0, lineTur->text());
+            itemToEdit->setText(1, QString::number(spinAdet->value()));
+            itemToEdit->setText(2, lineFiyat->text());
+            itemToEdit->setText(3, lineTedarik->text());
+            itemToEdit->setText(4, textIstek->toPlainText());
+            itemToEdit->setToolTip(4, textIstek->toPlainText());
+            editItem = false;
+        }
+        else
+        {
+            QTreeWidgetItem *it = new QTreeWidgetItem(treeSiparis);
+            it->setText(0, lineTur->text());
+            it->setText(1, QString::number(spinAdet->value()));
+            it->setText(2, lineFiyat->text());
+            it->setText(3, lineTedarik->text());
+            it->setText(4, textIstek->toPlainText());
+            it->setToolTip(4, textIstek->toPlainText());
+        }
+
 		temizle();
 		Hesapla();
 	}

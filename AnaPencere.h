@@ -1,6 +1,6 @@
 /*    
     Kara Kaplı Defter
-    Copyright (C) 2006  Kaya Oğuz
+    Copyright (C) 2006 & 2009 Kaya Oğuz
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -288,7 +288,7 @@ class AnaPencere:public QMainWindow, Ui::MainWindow
 		}
 		else if(hangisi == QString::fromUtf8("Siparişler"))
 		{
-			QSqlQuery q("select siparis.id, ad, faturaNo, toplam, onodeme, (toplam-onodeme), tarih, teslim, tur, adet, ekler, fiyat from siparis left join baglanti on baglanti.id=baglantiId left join siparisListe on siparisId=siparis.id where siparis.id=" + id);
+			QSqlQuery q("select siparis.id, ad, faturaNo, toplam, onodeme, (toplam-onodeme), tarih, teslim, tur, adet, ekler, fiyat, tedarik from siparis left join baglanti on baglanti.id=baglantiId left join siparisListe on siparisId=siparis.id where siparis.id=" + id);
 			bool firstRun = true;
 			QString yaz = "";
 			while(q.next())
@@ -306,9 +306,9 @@ class AnaPencere:public QMainWindow, Ui::MainWindow
 				QString::fromUtf8("<tr><td><b>Toplam</b></td><td>") + q.value(3).toString() + "</td></tr>" + 
 				"<tr><td colspan='2'><hr noshade size='1'></td></td></tr>" + 
 				"<tr><td colspan='2'><table width='100%' cellspacing='2' cellpadding='6' border='1'>" + 
-				"<tr><td colspan='4'><b>" + QString::fromUtf8("Sipariş Listesi") + "</b></td></tr>" +
+				"<tr><td colspan='5'><b>" + QString::fromUtf8("Sipariş Listesi") + "</b></td></tr>" +
 				"<tr><td><b>" + QString::fromUtf8("Tür") + "</b></td>" + 
-				"<td><b>Adet</b></td><td><b>Fiyat</b></td><td><b>" + QString::fromUtf8("Ek İstekler") + 
+				"<td><b>Adet</b></td><td><b>Fiyat</b></td><td><b>Tedarik F.</b></td><td><b>" + QString::fromUtf8("Ek İstekler") + 
 				"</b></td></tr>";
 				firstRun = false;
 				} 
@@ -316,6 +316,7 @@ class AnaPencere:public QMainWindow, Ui::MainWindow
 				QString::fromUtf8("<tr><td>") + q.value(8).toString() + "</td>" + 
 				QString::fromUtf8("<td>") + q.value(9).toString() + "</td>" + 
 				QString::fromUtf8("<td>") + q.value(11).toString() + "</td>" + 
+				QString::fromUtf8("<td>") + q.value(12).toString() + "</td>" + 
 				QString::fromUtf8("<td>") + q.value(10).toString() + "</td></tr>";
 				
 			}
@@ -423,7 +424,7 @@ class AnaPencere:public QMainWindow, Ui::MainWindow
 	void slotAbout()
 	{
 		QMessageBox::about(this, QString::fromUtf8("Kara Kaplı Defter Hakkında"), 
-		QString::fromUtf8("Bir sipariş takip programı\nSürüm: 0.5\n\nKaya Oğuz (c) 2006\nhttp://www.kuzeykutbu.org"));
+		QString::fromUtf8("Bir sipariş takip programı\nSürüm: 0.6\n\nKaya Oğuz (c) 2006 & 2009\nhttp://www.kuzeykutbu.org"));
 	}
 	
 	void slotEmail()

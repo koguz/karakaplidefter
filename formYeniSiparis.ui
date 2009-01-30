@@ -1,245 +1,269 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>formYeniSiparis</class>
  <widget class="QDialog" name="formYeniSiparis" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>533</width>
-    <height>409</height>
+    <width>638</width>
+    <height>534</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Sipariş Formu</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="simgeler.qrc" >:/new/prefix1/icons/kontact_todo.png</iconset>
+   <iconset resource="simgeler.qrc" >
+    <normaloff>:/new/prefix1/icons/kontact_todo.png</normaloff>:/new/prefix1/icons/kontact_todo.png</iconset>
   </property>
   <property name="whatsThis" >
    <string>Sipariş penceresi</string>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4" >
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
+    <widget class="QTabWidget" name="tabWidget" >
+     <property name="tabShape" >
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex" >
       <number>0</number>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QFrame" name="frame_2" >
-       <property name="frameShape" >
-        <enum>QFrame::Panel</enum>
-       </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item row="0" column="0" >
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>&amp;Müşteri</string>
-          </property>
-          <property name="textFormat" >
-           <enum>Qt::PlainText</enum>
-          </property>
-          <property name="buddy" >
-           <cstring>comboBaglanti</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" >
-         <widget class="QComboBox" name="comboBaglanti" />
-        </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="label_9" >
-          <property name="text" >
-           <string>&amp;Fatura No</string>
-          </property>
-          <property name="buddy" >
-           <cstring>lineFatura</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" >
-         <widget class="QLabel" name="label_10" >
-          <property name="text" >
-           <string>Tes&amp;lim Tarihi</string>
-          </property>
-          <property name="buddy" >
-           <cstring>dateTeslim</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" >
-         <widget class="QLineEdit" name="lineFatura" />
-        </item>
-        <item row="2" column="1" >
-         <widget class="QDateEdit" name="dateTeslim" >
-          <property name="displayFormat" >
-           <string>dd.MM.yyyy</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0" >
-         <widget class="QLabel" name="label_6" >
-          <property name="text" >
-           <string>Öde&amp;me</string>
-          </property>
-          <property name="buddy" >
-           <cstring>lineOdeme</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1" >
-         <widget class="QLineEdit" name="lineOdeme" />
-        </item>
-        <item row="4" column="0" >
-         <widget class="QLabel" name="label_7" >
-          <property name="text" >
-           <string>T&amp;oplam</string>
-          </property>
-          <property name="buddy" >
-           <cstring>lineToplam</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1" >
-         <widget class="QLineEdit" name="lineToplam" />
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="frame" >
-       <property name="frameShape" >
-        <enum>QFrame::Panel</enum>
-       </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item row="0" column="0" >
-         <widget class="QLabel" name="label_2" >
-          <property name="text" >
-           <string>&amp;Tür</string>
-          </property>
-          <property name="buddy" >
-           <cstring>lineTur</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="label_3" >
-          <property name="text" >
-           <string>&amp;Adet</string>
-          </property>
-          <property name="buddy" >
-           <cstring>spinAdet</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" >
-         <widget class="QLabel" name="label_4" >
-          <property name="text" >
-           <string>&amp;Fiyat</string>
-          </property>
-          <property name="buddy" >
-           <cstring>lineFiyat</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" >
-         <widget class="QLineEdit" name="lineTur" />
-        </item>
-        <item row="1" column="1" >
-         <widget class="QSpinBox" name="spinAdet" >
-          <property name="frame" >
-           <bool>true</bool>
-          </property>
-          <property name="maximum" >
-           <number>999999999</number>
-          </property>
-          <property name="minimum" >
-           <number>1</number>
-          </property>
-          <property name="value" >
-           <number>1</number>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0" >
-         <widget class="QLabel" name="label_5" >
-          <property name="text" >
-           <string>&amp;Ek İstekler</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-          </property>
-          <property name="buddy" >
-           <cstring>textIstek</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1" >
-         <widget class="QLineEdit" name="lineFiyat" />
-        </item>
-        <item row="3" column="1" >
-         <widget class="QTextEdit" name="textIstek" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>180</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="cursor" >
-           <cursor>4</cursor>
-          </property>
-          <property name="tabChangesFocus" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Sipariş Bilgileri</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout" >
+       <item row="0" column="0" >
+        <widget class="QLabel" name="label" >
+         <property name="text" >
+          <string>&amp;Müşteri</string>
+         </property>
+         <property name="textFormat" >
+          <enum>Qt::PlainText</enum>
+         </property>
+         <property name="buddy" >
+          <cstring>comboBaglanti</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QComboBox" name="comboBaglanti" />
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="label_9" >
+         <property name="text" >
+          <string>&amp;Fatura No</string>
+         </property>
+         <property name="buddy" >
+          <cstring>lineFatura</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" >
+        <widget class="QLineEdit" name="lineFatura" />
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="label_10" >
+         <property name="text" >
+          <string>Tes&amp;lim Tarihi</string>
+         </property>
+         <property name="buddy" >
+          <cstring>dateTeslim</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" >
+        <widget class="QDateEdit" name="dateTeslim" >
+         <property name="displayFormat" >
+          <string>dd.MM.yyyy</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QLabel" name="label_6" >
+         <property name="text" >
+          <string>Öde&amp;me</string>
+         </property>
+         <property name="buddy" >
+          <cstring>lineOdeme</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" >
+        <widget class="QLineEdit" name="lineOdeme" />
+       </item>
+       <item row="4" column="0" >
+        <widget class="QLabel" name="label_7" >
+         <property name="text" >
+          <string>T&amp;oplam</string>
+         </property>
+         <property name="buddy" >
+          <cstring>lineToplam</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" >
+        <widget class="QLineEdit" name="lineToplam" />
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2" >
+      <attribute name="title" >
+       <string>Siparişler</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout" >
+       <item>
+        <layout class="QFormLayout" name="formLayout_3" >
+         <item row="0" column="0" >
+          <widget class="QLabel" name="label_2" >
+           <property name="text" >
+            <string>&amp;Tür</string>
+           </property>
+           <property name="buddy" >
+            <cstring>lineTur</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" >
+          <widget class="QLineEdit" name="lineTur" />
+         </item>
+         <item row="1" column="0" >
+          <widget class="QLabel" name="label_4" >
+           <property name="text" >
+            <string>&amp;Fiyat</string>
+           </property>
+           <property name="buddy" >
+            <cstring>lineFiyat</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" >
+          <widget class="QLineEdit" name="lineFiyat" />
+         </item>
+         <item row="2" column="0" >
+          <widget class="QLabel" name="label_5" >
+           <property name="text" >
+            <string>&amp;Ek İstekler</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+           <property name="buddy" >
+            <cstring>textIstek</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" >
+          <widget class="QTextEdit" name="textIstek" >
+           <property name="sizePolicy" >
+            <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>180</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="cursor" stdset="0" >
+            <cursorShape>IBeamCursor</cursorShape>
+           </property>
+           <property name="tabChangesFocus" >
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3" >
+         <item>
+          <layout class="QFormLayout" name="formLayout_2" >
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_3" >
+             <property name="text" >
+              <string>&amp;Adet</string>
+             </property>
+             <property name="buddy" >
+              <cstring>spinAdet</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" >
+            <widget class="QSpinBox" name="spinAdet" >
+             <property name="frame" >
+              <bool>true</bool>
+             </property>
+             <property name="minimum" >
+              <number>1</number>
+             </property>
+             <property name="maximum" >
+              <number>999999999</number>
+             </property>
+             <property name="value" >
+              <number>1</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_8" >
+             <property name="text" >
+              <string>Teda&amp;rik F.</string>
+             </property>
+             <property name="buddy" >
+              <cstring>lineTedarik</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" >
+            <widget class="QLineEdit" name="lineTedarik" />
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer" >
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0" >
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2" >
+           <item>
+            <widget class="QPushButton" name="btnYeni" >
+             <property name="text" >
+              <string>Yeni</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnEkle" >
+             <property name="text" >
+              <string>Ekle / Güncelle</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </item>
    <item>
     <widget class="QFrame" name="frame_3" >
@@ -249,135 +273,91 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2" >
       <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+       <widget class="QTreeWidget" name="treeSiparis" >
+        <property name="contextMenuPolicy" >
+         <enum>Qt::CustomContextMenu</enum>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="toolTip" >
+         <string>Sağdaki + ve - düğmeleri ile siparişi ekleyebilir ya da silebilirsiniz.</string>
         </property>
+        <property name="whatsThis" >
+         <string>Sağdaki + ve - düğmeleri ile siparişi ekleyebilir ya da silebilirsiniz.</string>
+        </property>
+        <property name="frameShape" >
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <column>
+         <property name="text" >
+          <string>Tür</string>
+         </property>
+        </column>
+        <column>
+         <property name="text" >
+          <string>Adet</string>
+         </property>
+        </column>
+        <column>
+         <property name="text" >
+          <string>Fiyat</string>
+         </property>
+        </column>
+        <column>
+         <property name="text" >
+          <string>Tedarik F.</string>
+         </property>
+        </column>
+        <column>
+         <property name="text" >
+          <string>Ek</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout" >
         <item>
-         <widget class="QTreeWidget" name="treeSiparis" >
-          <property name="contextMenuPolicy" >
-           <enum>Qt::CustomContextMenu</enum>
+         <widget class="QPushButton" name="btnSil" >
+          <property name="minimumSize" >
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
           </property>
           <property name="toolTip" >
-           <string>Sağdaki + ve - düğmeleri ile siparişi ekleyebilir ya da silebilirsiniz.</string>
+           <string>Silme</string>
           </property>
-          <property name="whatsThis" >
-           <string>Sağdaki + ve - düğmeleri ile siparişi ekleyebilir ya da silebilirsiniz.</string>
+          <property name="text" >
+           <string/>
           </property>
-          <property name="frameShape" >
-           <enum>QFrame::StyledPanel</enum>
+          <property name="icon" >
+           <iconset resource="simgeler.qrc" >
+            <normaloff>:/new/prefix1/icons/hotlistdel.png</normaloff>:/new/prefix1/icons/hotlistdel.png</iconset>
           </property>
-          <column>
-           <property name="text" >
-            <string>Tür</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>Adet</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>Fiyat</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>Ek</string>
-           </property>
-          </column>
+          <property name="autoDefault" >
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
           </property>
-          <property name="spacing" >
-           <number>6</number>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>21</width>
+            <height>158</height>
+           </size>
           </property>
-          <item>
-           <widget class="QPushButton" name="btnEkle" >
-            <property name="minimumSize" >
-             <size>
-              <width>24</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>24</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="toolTip" >
-             <string>Ekleme</string>
-            </property>
-            <property name="text" >
-             <string/>
-            </property>
-            <property name="icon" >
-             <iconset resource="simgeler.qrc" >:/new/prefix1/icons/hotlistadd.png</iconset>
-            </property>
-            <property name="autoDefault" >
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnSil" >
-            <property name="minimumSize" >
-             <size>
-              <width>24</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>24</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="toolTip" >
-             <string>Silme</string>
-            </property>
-            <property name="text" >
-             <string/>
-            </property>
-            <property name="icon" >
-             <iconset resource="simgeler.qrc" >:/new/prefix1/icons/hotlistdel.png</iconset>
-            </property>
-            <property name="autoDefault" >
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" >
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -386,18 +366,18 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>131</width>
          <height>31</height>
@@ -429,20 +409,22 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>comboBaglanti</tabstop>
   <tabstop>lineFatura</tabstop>
   <tabstop>dateTeslim</tabstop>
   <tabstop>lineOdeme</tabstop>
   <tabstop>lineToplam</tabstop>
+  <tabstop>tabWidget</tabstop>
   <tabstop>lineTur</tabstop>
   <tabstop>spinAdet</tabstop>
   <tabstop>lineFiyat</tabstop>
+  <tabstop>lineTedarik</tabstop>
   <tabstop>textIstek</tabstop>
-  <tabstop>treeSiparis</tabstop>
+  <tabstop>btnYeni</tabstop>
   <tabstop>btnEkle</tabstop>
   <tabstop>btnSil</tabstop>
+  <tabstop>treeSiparis</tabstop>
   <tabstop>okButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>

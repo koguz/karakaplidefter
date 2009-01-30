@@ -1,19 +1,20 @@
 <RCC>
-    <qresource prefix="/new/prefix1" >
-        <file>icons/configure.png</file>
-        <file>icons/date.png</file>
-        <file>icons/edit.png</file>
-        <file>icons/editdelete.png</file>
-        <file>icons/exit.png</file>
-        <file>icons/filefind.png</file>
-        <file>icons/fileprint.png</file>
-        <file>icons/help.png</file>
-        <file>icons/hotlistadd.png</file>
-        <file>icons/hotlistdel.png</file>
-        <file>icons/identity.png</file>
-        <file>icons/kkd64.png</file>
-        <file>icons/kontact_todo.png</file>
-        <file>icons/locationbar_erase.png</file>
-        <file>icons/mail_new3.png</file>
-    </qresource>
+  <qresource prefix="/new/prefix1" >
+    <file>icons/hotlistupdate.png</file>
+    <file>icons/configure.png</file>
+    <file>icons/date.png</file>
+    <file>icons/edit.png</file>
+    <file>icons/editdelete.png</file>
+    <file>icons/exit.png</file>
+    <file>icons/filefind.png</file>
+    <file>icons/fileprint.png</file>
+    <file>icons/help.png</file>
+    <file>icons/hotlistadd.png</file>
+    <file>icons/hotlistdel.png</file>
+    <file>icons/identity.png</file>
+    <file>icons/kkd64.png</file>
+    <file>icons/kontact_todo.png</file>
+    <file>icons/locationbar_erase.png</file>
+    <file>icons/mail_new3.png</file>
+  </qresource>
 </RCC>
