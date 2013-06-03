@@ -1,7 +1,7 @@
 	KARA KAPLI DEFTER
 	Müşteri / Sipariş Takip Programı
 	
-	Sürüm 0.5
+	Sürüm 0.7
 	
 	Nedir?
 	Basit bir müşteri / sipariş takip programıdır. 
@@ -12,15 +12,14 @@
 	Yazıcıdan çıktı
 	Arama / Detaylı Arama
 	Günlük ve Aylık Raporlama
-	Müşterilere ve / veya belli sektörlere e-posta gönderme
 	
 	Kurulum
-	qmake-qt4 -project
+	qmake -project
 	oluşan KaraKapliDefter.pro dosyasına
-	QT += sql network
+	QT += sql widgets printsupport
 	satırını ekleyin
 	
-	qmake-qt4
+	qmake
 	make
 	
 	oluşan KaraKapliDefter çalıştırılabilir dosyasını istediğiniz bir 
@@ -35,17 +34,8 @@
 	Web Sitesi
 	http://karakaplidefter.googlecode.com/
 	
-	Ek
-	_tools.cpp
-	_tools.h
-	smtp.cpp
-	smtp.h
-	dosyaları
-	http://www.qtcentre.org/forum/f-qt-programming-2/t-sending-email-using-qt-2221.html
-	adresindeki örnekten alınıp gerekli yerleri değiştirilmiştir...
-	
 	Windows altında kkd32.ico dosyası simge olarak kullanılabilir...
 	
-	Kaya Oğuz / 2006 & 2009
+	Kaya Oğuz / 2006 - 2013
 	
 	

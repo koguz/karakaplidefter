@@ -38,14 +38,8 @@ class FormAyarlar:public QDialog, Ui::formAyarlar
 		lineTelefon->setText(ayarlar.value("genel/telefon").toString());
 		lineUrl->setText(ayarlar.value("genel/url").toString());
 		linePosta->setText(ayarlar.value("genel/eposta").toString());
-		comboPrinter->setCurrentIndex(comboPrinter->findText(ayarlar.value("printer/sayfa").toString(), Qt::MatchExactly));
-		lineSmtp->setText(ayarlar.value("eposta/smtp").toString());
-		spinPort->setValue(ayarlar.value("eposta/port", 25).toInt());
-		lineKullanici->setText(ayarlar.value("eposta/kullanici").toString());
-		lineParola->setText(QByteArray::fromBase64(ayarlar.value("eposta/parola").toByteArray()).data());
-		
+		comboPrinter->setCurrentIndex(comboPrinter->findText(ayarlar.value("printer/sayfa").toString(), Qt::MatchExactly));		
 		connect(okButton, SIGNAL(clicked()), this, SLOT(slotKaydet()));
-		
 	}
 	
 	public slots:
@@ -58,11 +52,6 @@ class FormAyarlar:public QDialog, Ui::formAyarlar
 		ayarlar.setValue("genel/url", lineUrl->text());
 		ayarlar.setValue("genel/eposta", linePosta->text());
 		ayarlar.setValue("printer/sayfa", comboPrinter->currentText());
-		ayarlar.setValue("eposta/smtp", lineSmtp->text());
-		ayarlar.setValue("eposta/port", spinPort->value());
-		ayarlar.setValue("eposta/kullanici", lineKullanici->text());
-		QByteArray passBase64 = lineParola->text().toAscii().toBase64();
-		ayarlar.setValue("eposta/parola", passBase64); // ?? olmas
 		accept();
 	}
 	

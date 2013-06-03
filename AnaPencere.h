@@ -27,7 +27,6 @@
 #include <QDate>
 #include <QSettings>
 #include "ui_anaPencere.h"
-#include "formEmail.h"
 #include "formYeniBaglanti.h"
 #include "formYeniSiparis.h"
 #include "formAyarlar.h"
@@ -48,29 +47,22 @@ class AnaPencere:public QMainWindow, Ui::MainWindow
 				
 		red.setNamedColor("#990000");
 		beyaz.setNamedColor("#FFFFFF");
-
-		/*
-		QAction *actionEdit;
-		QAction *actionDel;
-		QAction *actionArama;
-    	*/
 		
-		connect(actionAbout, SIGNAL(activated()), this, SLOT(slotAbout()));
-		connect(actionEmail, SIGNAL(activated()), this, SLOT(slotEmail()));
-		connect(actionNewContact, SIGNAL(activated()), this, SLOT(slotNewContact()));
-		connect(actionNewOrder, SIGNAL(activated()), this, SLOT(slotNewOrder()));
-		connect(actionPrint, SIGNAL(activated()), this, SLOT(slotPrint()));
-		connect(actionQuit, SIGNAL(activated()), this, SLOT(close()));
-		connect(actionAyarlar, SIGNAL(activated()), this, SLOT(slotAyarlar()));
-		connect(actionDel, SIGNAL(activated()), this, SLOT(slotCancel()));
-		connect(actionEdit, SIGNAL(activated()), this, SLOT(slotEdit()));
-		connect(actionArama, SIGNAL(activated()), this, SLOT(slotArama()));
-		connect(actionHelp, SIGNAL(activated()), this, SLOT(slotYardim()));
+		connect(actionAbout, SIGNAL(triggered()), this, SLOT(slotAbout()));
+		connect(actionNewContact, SIGNAL(triggered()), this, SLOT(slotNewContact()));
+		connect(actionNewOrder, SIGNAL(triggered()), this, SLOT(slotNewOrder()));
+		connect(actionPrint, SIGNAL(triggered()), this, SLOT(slotPrint()));
+		connect(actionQuit, SIGNAL(triggered()), this, SLOT(close()));
+		connect(actionAyarlar, SIGNAL(triggered()), this, SLOT(slotAyarlar()));
+		connect(actionDel, SIGNAL(triggered()), this, SLOT(slotCancel()));
+		connect(actionEdit, SIGNAL(triggered()), this, SLOT(slotEdit()));
+		connect(actionArama, SIGNAL(triggered()), this, SLOT(slotArama()));
+		connect(actionHelp, SIGNAL(triggered()), this, SLOT(slotYardim()));
 		
 		connect(buttonClear, SIGNAL(clicked()), this, SLOT(slotResetSearch()));
 		connect(lineAra, SIGNAL(returnPressed()), this, SLOT(slotAra()));
 		connect(treeSonuclar, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(slotDetay(QTreeWidgetItem *, int)));
-		connect(actionDaily, SIGNAL(activated()), this, SLOT(slotDaily()));
+		connect(actionDaily, SIGNAL(triggered()), this, SLOT(slotDaily()));
 	}
 	
 	public slots:
@@ -424,13 +416,7 @@ class AnaPencere:public QMainWindow, Ui::MainWindow
 	void slotAbout()
 	{
 		QMessageBox::about(this, QString::fromUtf8("Kara Kaplı Defter Hakkında"), 
-		QString::fromUtf8("Bir sipariş takip programı\nSürüm: 0.6\n\nKaya Oğuz (c) 2006 & 2009\nhttp://www.kuzeykutbu.org"));
-	}
-	
-	void slotEmail()
-	{
-		FormEmail *f = new FormEmail(this);
-		f->exec();
+		QString::fromUtf8("Bir sipariş takip programı\nSürüm: 0.7\n\nKaya Oğuz (c) 2006 - 2013\nhttp://www.kuzey.web.tr"));
 	}
 };
 
