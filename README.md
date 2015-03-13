@@ -1,7 +1,7 @@
-# karakaplidefter
+# Kara Kaplı Defter
 Basit bir müşteri / sipariş takip programı
 
-Özellikleri
+*Özellikleri*
 
 * Müşteri bilgileri tutma / güncelleme
 * Sipariş bilgileri tutma / güncelleme / iptal etme
