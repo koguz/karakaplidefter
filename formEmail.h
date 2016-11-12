@@ -24,7 +24,7 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include "ui_formEmail.h"
-#include "smtp.h"
+//#include "smtp.h"
 
 class FormEmail:public QDialog, Ui::formEmail
 {
@@ -76,7 +76,7 @@ class FormEmail:public QDialog, Ui::formEmail
 		}
 		
 		qDebug() << kimlere;
-		
+		accept(); /*
 		Smtp *newMail = new Smtp(smtp, port, smtpUser, smtpPass);
 		newMail->Send(ePosta, kimlere, lineKonu->text(), metinGonder->toPlainText());
 		if (newMail->isErr)
@@ -84,7 +84,7 @@ class FormEmail:public QDialog, Ui::formEmail
 			QMessageBox::critical(this, "Hata!", 
 				QString::fromUtf8("Posta gönderirken hata oluştu"));
 		}
-		else accept();
+		else accept();*/
 	}
 	
 	void refreshCombo()
@@ -101,5 +101,4 @@ class FormEmail:public QDialog, Ui::formEmail
 	}
 	
 };
-
 

@@ -1,3 +1,7 @@
+Sürüm 0.7.1
+2016.11.12
+	- E-posta için kullanılan smtp.h dosyasına olan gereksinim kaldırıldı. 
+
 Sürüm 0.7
 2013.06.03
     - E-posta kaldırıldı. 
